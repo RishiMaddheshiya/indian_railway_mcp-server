@@ -1,0 +1,47 @@
+{
+  "name": "irctc-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Indian Railways / IRCTC: live trains between stations, seat availability, fares, PNR status, schedules and running status. Real-time with no API key required.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "irctc-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "node --test scripts/parsers.test.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "prepare": "npm run build",
+    "test:parsers": "node --test scripts/parsers.test.mjs",
+    "test:all": "npm run build && npm run test:parsers && npm run smoke"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "irctc",
+    "indian-railways",
+    "trains",
+    "pnr",
+    "travel"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
